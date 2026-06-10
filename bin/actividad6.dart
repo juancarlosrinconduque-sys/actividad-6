@@ -15,6 +15,9 @@ void main() {
     case 3:
       tercero(fibonacci, 10);
       break;
+    case 4:
+      cuarta();
+      break;
   }
 }
 
@@ -43,4 +46,40 @@ void tercero(List lista, int limite) {
     lista.add(a);
   }
   print(lista);
+}
+
+// Función para calcular el promedio
+double calcularPromedio(List<double> notas) {
+  double suma = 0;
+
+  for (int i = 0; i < notas.length; i++) {
+    suma += notas[i];
+  }
+
+  return suma / notas.length;
+}
+
+// Función para clasificar al estudiante
+String clasificarEstudiante(double promedio) {
+  if (promedio >= 3.0) {
+    return "Aprobado";
+  } else {
+    return "Reprobado";
+  }
+}
+
+void cuarta() {
+  List<double> notas = [];
+
+  print("Ingrese 5 notas:");
+
+  for (int i = 1; i <= 5; i++) {
+    stdout.write("Nota $i: ");
+    notas.add(double.parse(stdin.readLineSync()!));
+  }
+
+  double promedio = calcularPromedio(notas);
+
+  print("\nPromedio: ${promedio.toStringAsFixed(2)}");
+  print("Resultado: ${clasificarEstudiante(promedio)}");
 }
